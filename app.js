@@ -123,6 +123,8 @@ app.get('/health', (req, res) => {
 // ======================
 
 app.use('/auth', authRoutes);
+app.use("/api", require("./routes/transcription.routes"));
+
 
 // ======================
 // 404 Handler
