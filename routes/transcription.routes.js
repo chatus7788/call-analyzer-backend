@@ -1,8 +1,9 @@
-const express = require("express");
+import express from "express";
+import uploadAudio from "../middlewares/uploadS3.middleware.js";
+import { startTranscription } from "../controllers/transcription.controller.js";
+
 const router = express.Router();
-const uploadAudio = require("../middlewares/uploadS3.middleware");
-const { startTranscription } = require("../controllers/transcription.controller");
 
 router.post("/transcribe", uploadAudio.single("audio"), startTranscription);
 
-module.exports = router;
+export { router as transcript };

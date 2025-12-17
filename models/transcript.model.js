@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const TranscriptSchema = new mongoose.Schema({
   userId: {
@@ -44,4 +44,4 @@ const TranscriptSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Transcript", TranscriptSchema);
+export default mongoose.model("Transcript", TranscriptSchema);

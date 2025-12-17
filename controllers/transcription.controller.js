@@ -1,5 +1,5 @@
-const Transcript = require("../models/transcript.model");
-const { createTranscript } = require("../services/assemblyai.service");
+import Transcript from "../models/transcript.model.js";
+import { createTranscript } from "../services/assemblyai.service.js";
 
 const startTranscription = async (req, res) => {
   try {
@@ -31,4 +31,4 @@ const startTranscription = async (req, res) => {
   }
 };
 
-module.exports = { startTranscription };
+export { startTranscription };

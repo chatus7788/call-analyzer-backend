@@ -1,6 +1,6 @@
-const multer = require("multer");
-const multerS3 = require("multer-s3");
-const s3 = require("../config/s3.config");
+import multer from "multer";
+import multerS3 from "multer-s3";
+import s3 from "../config/s3.config.js";
 
 const uploadAudio = multer({
   storage: multerS3({
@@ -14,4 +14,4 @@ const uploadAudio = multer({
   limits: { fileSize: 100 * 1024 * 1024 }, // 100MB
 });
 
-module.exports = uploadAudio;
+export default uploadAudio;

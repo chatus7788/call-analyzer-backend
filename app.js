@@ -4,6 +4,8 @@ import mongoose from 'mongoose';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import authRoutes from './routes/auth.js';
+import {transcript} from "./routes/transcription.routes.js"
+
 
 /**
  * Call Analyzer Application
@@ -123,7 +125,7 @@ app.get('/health', (req, res) => {
 // ======================
 
 app.use('/auth', authRoutes);
-app.use("/api", require("./routes/transcription.routes"));
+app.use('/api', transcript);
 
 
 // ======================
