@@ -1,10 +1,13 @@
 import Transcript from "../models/transcript.model.js";
 import { createTranscript } from "../services/assemblyai.service.js";
+import { getPresignedUrl } from "../utils/s3PresignedUrl.js";
 
 const startTranscription = async (req, res) => {
   try {
+
+    const s3Key = req.file.key;
     // 1️⃣ File uploaded to S3 by multer-s3
-    const audioUrl = req.file?.location;
+    const audioUrl = await getPresignedUrl(s3Key);
 
     if (!audioUrl) {
       return res.status(400).json({ message: "Audio file missing" });
