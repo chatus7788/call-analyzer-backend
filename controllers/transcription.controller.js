@@ -12,7 +12,7 @@ const startTranscription = async (req, res) => {
 
     // 2️⃣ Create DB entry (status = queued)
     const transcript = await Transcript.create({
-      userId: req.user?.id, // from auth middleware
+      // userId: "12", // from auth middleware
       audioUrl,
       status: "queued",
     });

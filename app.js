@@ -242,6 +242,7 @@ const startServer = async () => {
       console.log(`  POST   /auth/register - Register new user`);
       console.log(`  POST   /auth/login    - Login user`);
       console.log(`  GET    /auth/me       - Get current user profile (protected)`);
+      console.log(`  POST   /api/transcript - Upload and transcribe audio file`);
       console.log(`  GET    /health        - Health check`);
     });
   } catch (error) {
