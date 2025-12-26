@@ -30,6 +30,40 @@ const TranscriptSchema = new mongoose.Schema({
     type: Array,
   },
 
+  // Sentiment Analysis
+  sentimentAnalysis: {
+    type: Array, // Array of { text, sentiment, confidence }
+  },
+
+  overallSentiment: {
+    label: {
+      type: String,
+      enum: ["positive", "negative", "neutral", "unknown"],
+    },
+    score: {
+      type: Number,
+    },
+  },
+
+  // Tone Classification
+  tone: {
+    label: {
+      type: String,
+      enum: ["polite", "aggressive", "neutral", "unknown"],
+    },
+    confidence: {
+      type: Number,
+    },
+    isAggressive: {
+      type: Boolean,
+    },
+  },
+
+  // Content Safety
+  contentSafety: {
+    type: Object, // Full content safety results from AssemblyAI
+  },
+
   errorMessage: {
     type: String,
   },
