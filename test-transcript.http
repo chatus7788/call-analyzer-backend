@@ -1,0 +1,39 @@
+### Test Transcript API
+### You need to replace YOUR_JWT_TOKEN with an actual token from login
+
+@baseUrl = http://localhost:3000
+@token = YOUR_JWT_TOKEN
+
+### Health Check
+GET {{baseUrl}}/health
+
+### Register User (if needed)
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "Test123!@#",
+  "name": "Test User"
+}
+
+### Login to get token
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@example.com",
+  "password": "Test123!@#"
+}
+
+### Upload Audio for Transcription
+POST {{baseUrl}}/api/transcript
+Authorization: Bearer {{token}}
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="audio"; filename="sample.mp3"
+Content-Type: audio/mpeg
+
+< ./sample-audio.mp3
+------WebKitFormBoundary7MA4YWxkTrZu0gW--

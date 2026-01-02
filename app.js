@@ -4,6 +4,8 @@ import mongoose from 'mongoose';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import authRoutes from './routes/auth.js';
+import {transcript} from "./routes/transcription.routes.js"
+
 
 /**
  * Call Analyzer Application
@@ -123,6 +125,8 @@ app.get('/health', (req, res) => {
 // ======================
 
 app.use('/auth', authRoutes);
+app.use('/api', transcript);
+
 
 // ======================
 // 404 Handler
@@ -238,6 +242,7 @@ const startServer = async () => {
       console.log(`  POST   /auth/register - Register new user`);
       console.log(`  POST   /auth/login    - Login user`);
       console.log(`  GET    /auth/me       - Get current user profile (protected)`);
+      console.log(`  POST   /api/transcript - Upload and transcribe audio file`);
       console.log(`  GET    /health        - Health check`);
     });
   } catch (error) {
