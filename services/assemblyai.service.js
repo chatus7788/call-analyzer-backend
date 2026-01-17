@@ -83,6 +83,8 @@ const createTranscript = async (audioUrl, transcriptId) => {
 
     const transcript = await client.transcripts.transcribe({
       audio_url: audioUrl,
+      speaker_labels: true,
+      speakers_expected: 2,
       sentiment_analysis: true,
       content_safety: true,
     });
@@ -99,7 +101,7 @@ const createTranscript = async (audioUrl, transcriptId) => {
       throw new Error(`Transcription failed: ${transcript.error}`);
     }
     
-    console.log("AssemblyAI transcript created:", transcript.text, transcript.id);
+    console.log("AssemblyAI transcript created:", transcript);
     
     // Process sentiment analysis
     const sentimentAnalysis = transcript.sentiment_analysis_results?.map(s => ({
